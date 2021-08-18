@@ -1,7 +1,7 @@
 {% extends "base.njk" %}
 
 {% block title %}
-    SWAPI Interface
+    - {{ data.name }}
 {% endblock %}
 
 {% block nav %}
@@ -9,5 +9,33 @@
 {% endblock %}
 
 {% block body %}
-    This is the body.
+    {% include('partials/searchbar.njk') %}
+
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+
+            <h1>{{ data.name }}</h1>
+
+            <h2>Biological Data</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Classification:</strong> {{ data.classification }}</li>
+                <li class="list-group-item"><strong>Designation:</strong> {{ data.designation }}</li>
+                <li class="list-group-item"><strong>Average Height:</strong> {{ data.average_height }}</li>
+                <li class="list-group-item"><strong>Average Lifespan:</strong> {{ data.average_lifespan }}</li>
+                <li class="list-group-item"><strong>Eye Colours:</strong> {{ data.eye_colors }} meters</li>
+                <li class="list-group-item"><strong>Hair Colours:</strong> {{ data.hair_colors }}</li>
+                <li class="list-group-item"><strong>Skin Colours:</strong> {{ data.skin_colors }}</li>
+                <li class="list-group-item"><strong>Language:</strong> {{ data.language }}</li>
+            </ul>
+
+            <h2>Films</h2>
+
+            <ul class="list-group list-group-flush">
+                {% for film in filmData %}
+                    <li class="list-group-item"><a href="{{ film.url|shorten(21) }}" class="text-decoration-none">{{ film.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
 {% endblock %}

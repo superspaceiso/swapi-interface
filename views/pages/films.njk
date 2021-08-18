@@ -1,7 +1,7 @@
 {% extends "base.njk" %}
 
 {% block title %}
-    SWAPI Interface
+    - {{ data.title }}
 {% endblock %}
 
 {% block nav %}
@@ -9,5 +9,31 @@
 {% endblock %}
 
 {% block body %}
-    This is the body.
+    {% include('partials/searchbar.njk') %}
+
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+
+            <h1>{{ data.title }}</h1>
+
+            <p class="lead">{{ data.opening_crawl }}</p>
+
+            <h2>Production Data</h2>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Director:</strong> {{ data.director }}</li>
+                <li class="list-group-item"><strong>Producer:</strong> {{ data.producer }}</li>
+                <li class="list-group-item"><strong>Release Date:</strong> {{ data.release_date }}</li>
+            </ul>
+
+            <h2>Characters</h2>
+
+            <ul class="list-group list-group-flush">
+            {% for character in charactersData %}
+                <li class="list-group-item"><a href="{{ character.url|shorten(21) }}" class="text-decoration-none">{{ character.name }}</a></li>
+            {% endfor %}
+            </ul>
+
+        </div>
+    </div>
 {% endblock %}

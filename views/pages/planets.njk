@@ -1,9 +1,42 @@
 {% extends "base.njk" %}
 
 {% block title %}
-    SWAPI Interface
+    - {{ data.name }}
+{% endblock %}
+
+{% block nav %}
+    {% include('partials/nav.njk') %}
 {% endblock %}
 
 {% block body %}
-    This is the body.
+    {% include('partials/searchbar.njk') %}
+
+    <div class="card mt-4 mb-4">
+        <div class="card-bod">
+
+            <h1>{{ data.name }}</h1>
+
+            <h2>Planetary Data</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Diameter:</strong> {{ data.diameter }} km</li>
+                <li class="list-group-item"><strong>Rotation Period:</strong> {{ data.rotation_period }} hours</li>
+                <li class="list-group-item"><strong>Orbital Period:</strong> {{ data.orbital_period }} days</li>
+                <li class="list-group-item"><strong>Gravity:</strong> {{ data.gravity }}</li>
+                <li class="list-group-item"><strong>Population:</strong> {{ data.population }}</li>
+                <li class="list-group-item"><strong>Climate:</strong> {{ data.climate|capitalize }}</li>
+                <li class="list-group-item"><strong>Terrain:</strong> {{ data.terrain }}</li>
+                <li class="list-group-item"><strong>Surface Water:</strong> {{ data.surface_water }}%</li>
+            </ul>
+
+            <h2>Films</h2>
+
+            <ul class="list-group list-group-flush">
+                {% for film in filmData %}
+                    <li class="list-group-item"><a href="{{ film.url|shorten(21) }}" class="text-decoration-none">{{ film.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+
+        </div>
+    </div>
 {% endblock %}

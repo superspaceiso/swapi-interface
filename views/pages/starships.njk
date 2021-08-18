@@ -1,7 +1,7 @@
 {% extends "base.njk" %}
 
 {% block title %}
-    SWAPI Interface
+    - {{ data.name }}
 {% endblock %}
 
 {% block nav %}
@@ -9,5 +9,36 @@
 {% endblock %}
 
 {% block body %}
-    This is the body.
+    {% include('partials/searchbar.njk') %}
+
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+
+            <h1>{{ data.name }}</h1>
+
+            <h2>Technical Data</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Model:</strong> {{ data.model }}</li>
+                <li class="list-group-item"><strong>Starship Class:</strong> {{ data.starship_class }}</li>
+                <li class="list-group-item"><strong>Manufacturer:</strong> {{ data.manufacturer }}</li>
+                <li class="list-group-item"><strong>Cost:</strong> {{ data.cost_in_credits }} Credits</li>
+                <li class="list-group-item"><strong>Length:</strong> {{ data.length }} meters</li>
+                <li class="list-group-item"><strong>Crew:</strong> {{ data.crew }}</li>
+                <li class="list-group-item"><strong>Passengers:</strong> {{ data.passengers }}</li>
+                <li class="list-group-item"><strong>Atmospheric Speed:</strong> {{ data.max_atmosphering_speed }}</li>
+                <li class="list-group-item"><strong>Hyperdrive Rating:</strong> {{ data.hyperdrive_rating  }}</li>
+                <li class="list-group-item"><strong>MGLT:</strong> {{ data.MGLT }}</li>
+                <li class="list-group-item"><strong>Cargo Capacity:</strong> {{ data.cargo_capacity }}</li>
+            </ul>
+
+            <h2>Films</h2>
+
+            <ul class="list-group list-group-flush">
+                {% for film in filmData %}
+                    <li class="list-group-item"><a href="{{ film.url|shorten(21) }}" class="text-decoration-none">{{ film.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.njk" %}
 
 {% block title %}
-   - Search Results for {{ query|capitalize }}
+   - Search Results for {{ query|title }}
 {% endblock %}
 
 {% block nav %}
@@ -9,21 +9,17 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        {% include('partials/searchbar.njk') %}
-    </div>
+    {% include('partials/searchbar.njk') %}
 
-    <div class="row">
-        <div class="card mt-4">
-            <div class="card-body">
-                <h2>Search Results for <strong>{{ query|capitalize }}</strong></h2>
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+            <h1>Search Results for <strong>{{ query|title }}</strong></h1>
 
-                {% for item in data.results %}
-                    <h3>{{ item.name or item.title}}</h3>
-                {% else %}
-                    <h3>No Results.</h3>
-                {% endfor %}
-            </div>
+            {% for item in data.results %}
+                <h2><a href="{{ item.url|shorten(21) }}" class="text-decoration-none">{{ item.name or item.title}}</a></h2>
+            {% else %}
+                <h2>No Results.</h2>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
