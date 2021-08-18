@@ -12,7 +12,7 @@
     {% include('partials/searchbar.njk') %}
 
     <div class="card mt-4 mb-4">
-        <div class="card-bod">
+        <div class="card-body">
 
             <h1>{{ data.name }}</h1>
 
@@ -31,11 +31,14 @@
             <h2>Films</h2>
 
             <ul class="list-group list-group-flush">
-                {% for film in filmData %}
-                    <li class="list-group-item"><a href="{{ film.url|shorten(21) }}" class="text-decoration-none">{{ film.title }}</a></li>
-                {% endfor %}
+                {% if filmData.length %}
+                    {% for film in filmData %}
+                        <li class="list-group-item"><a href="{{ film.url|shorten(21) }}" class="text-decoration-none">{{ film.title }}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item">No information available.</li>
+                {% endif %}
             </ul>
-
 
         </div>
     </div>
