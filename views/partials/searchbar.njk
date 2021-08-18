@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-body">
+        <form name="searchForm" method="post" action="/search">
+            <div class="row">
+                <div class="from-group col-2">
+                    <label for="parameter" class="fs-5 w-100">
+                        <select name="parameter" class="form-control form-select fs-5 w-100">
+                            <option value="people">People</option>
+                            <option value="films">Films</option>
+                            <option value="starships">Starships</option>
+                            <option value="vehicles">Vehicles</option>
+                            <option value="species">Species</option>
+                            <option value="planets">Planets</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="from-group col-8">
+                    <input type="search" id="query" name="query" class="form-control fs-5">
+                    <label for="query" class="form-label fs-5"></label>
+                </div>
+                <div class="from-group col-2">
+                    <input type="submit" class="btn btn-primary w-100 fs-5" id="searchBtn" value="Search">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

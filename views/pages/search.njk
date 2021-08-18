@@ -1,0 +1,29 @@
+{% extends "base.njk" %}
+
+{% block title %}
+   - Search Results for {{ query|capitalize }}
+{% endblock %}
+
+{% block nav %}
+    {% include('partials/nav.njk') %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        {% include('partials/searchbar.njk') %}
+    </div>
+
+    <div class="row">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>Search Results for <strong>{{ query|capitalize }}</strong></h2>
+
+                {% for item in data.results %}
+                    <h3>{{ item.name or item.title}}</h3>
+                {% else %}
+                    <h3>No Results.</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

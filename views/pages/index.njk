@@ -1,0 +1,18 @@
+{% extends "base.njk" %}
+
+{% block title %}
+    SWAPI Interface
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col text-center pt-5 pb-5">
+            <h1>SWAPI Interface</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center pt-5 pb-5">
+            {% include('partials/searchbar.njk') %}
+        </div>
+    </div>
+{% endblock %}
